@@ -1,16 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
-import { useTheme } from "../../context/ThemeContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
-  const { theme } = useTheme();
-
-  // Consistent link source mapping for desktop and mobile menus
   const navLinks = [
     { name: "About", id: "about" },
     { name: "Services", id: "services" },
@@ -19,13 +15,14 @@ export default function Navbar() {
     { name: "Testimonials", id: "testimonials" },
     { name: "FAQ", id: "faq" },
     { name: "Contact", id: "contact" },
+    { name: "Team", id: "team" },
+    { name: "Career", id: "career" },
   ];
 
-  // 1. High Performance Scroll Spy with IntersectionObserver
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-30% 0px -60% 0px", // Triggers active state when section hits viewport center
+      rootMargin: "-30% 0px -60% 0px",
       threshold: 0,
     };
 
@@ -39,7 +36,6 @@ export default function Navbar() {
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
-    // Observe hero explicitly + all links
     const heroEl = document.getElementById("hero");
     if (heroEl) observer.observe(heroEl);
 
@@ -48,7 +44,6 @@ export default function Navbar() {
       if (el) observer.observe(el);
     });
 
-    // Handle scroll trigger background threshold
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -61,7 +56,6 @@ export default function Navbar() {
     };
   }, []);
 
-  // 2. Smooth scrolling handler
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
     setOpen(false);
@@ -72,31 +66,28 @@ export default function Navbar() {
     }
   };
 
-  // Theme checking logic matching Tailwind v4 configuration profiles
-  const isDark = theme === "dark";
-
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 font-sans ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl border-b border-zinc-200/50 dark:border-zinc-800/50 py-4"
+            ? "bg-white/70 dark:bg-[#0b0f19]/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-white/10 py-4"
             : "bg-transparent py-6"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           
-          {/* Logo links back to Hero */}
+          {/* Logo */}
           <a
             href="#hero"
             onClick={(e) => handleScrollTo(e, "hero")}
-            className="text-2xl font-display font-bold tracking-tight text-zinc-900 dark:text-white"
+            className="text-2xl font-bold tracking-tight text-[#0f172a] dark:text-white"
           >
             Kroy<span className="text-indigo-600 dark:text-indigo-400">soft</span>
           </a>
 
-          {/* Desktop Menu - Floating Pill Style with Framer Layout Animations */}
-          <nav className="hidden md:flex items-center gap-1 bg-zinc-100/80 dark:bg-zinc-900/80 p-1.5 rounded-full border border-zinc-200/40 dark:border-zinc-800/40 backdrop-blur-md">
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex items-center gap-1 bg-slate-100/80 dark:bg-white/5 p-1.5 rounded-full border border-slate-200/40 dark:border-white/5 backdrop-blur-md">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -106,14 +97,14 @@ export default function Navbar() {
                   onClick={(e) => handleScrollTo(e, link.id)}
                   className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
                     isActive
-                      ? "text-zinc-950 dark:text-white"
-                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200"
+                      ? "text-[#0f172a] dark:text-white"
+                      : "text-slate-500 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white"
                   }`}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="activePill"
-                      className="absolute inset-0 bg-white dark:bg-zinc-800 shadow-sm rounded-full -z-10"
+                      className="absolute inset-0 bg-white dark:bg-white/10 shadow-sm rounded-full -z-10"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -123,30 +114,30 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Action CTA Element - Desktop Only */}
+          {/* Action CTA */}
           <div className="hidden md:block">
             <a
               href="#pricing"
               onClick={(e) => handleScrollTo(e, "pricing")}
-              className="inline-flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-zinc-950 px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm"
+              className="inline-flex items-center gap-2 bg-[#0f172a] hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-[#0f172a] px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm"
             >
               Get Started
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
 
-          {/* Mobile Menu Rounded Circle Trigger Button on Right */}
+          {/* Mobile Toggle Trigger */}
           <button
             onClick={() => setOpen(!open)}
             aria-label="Toggle Menu"
-            className="md:hidden w-11 h-11 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center text-zinc-800 dark:text-zinc-200 focus:outline-none transition-colors"
+            className="md:hidden w-11 h-11 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0b0f19] flex items-center justify-center text-[#0f172a] dark:text-white focus:outline-none transition-colors"
           >
             {open ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
           </button>
         </div>
       </header>
 
-      {/* Full-screen Mobile Menu Overlay */}
+      {/* Full-screen Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -154,7 +145,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 bg-white dark:bg-zinc-950 pt-32 px-6 pb-12 flex flex-col justify-between md:hidden"
+            className="fixed inset-0 z-40 bg-white dark:bg-[#0b0f19] pt-32 px-6 pb-12 flex flex-col justify-between md:hidden"
           >
             <div className="flex flex-col space-y-2">
               {navLinks.map((link, idx) => {
@@ -167,7 +158,7 @@ export default function Navbar() {
                     key={link.id}
                     href={`#${link.id}`}
                     onClick={(e) => handleScrollTo(e, link.id)}
-                    className="flex items-center justify-between py-3 border-b border-zinc-100 dark:border-zinc-900/60 text-2xl font-display font-medium text-zinc-800 dark:text-zinc-200"
+                    className="flex items-center justify-between py-3 border-b border-slate-100 dark:border-white/5 text-2xl font-medium text-[#0f172a] dark:text-white"
                   >
                     <span className={isActive ? "text-indigo-600 dark:text-indigo-400 font-bold" : ""}>
                       {link.name}
@@ -175,14 +166,13 @@ export default function Navbar() {
                     {isActive ? (
                       <ChevronUp className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-zinc-400" />
+                      <ChevronDown className="w-5 h-5 text-slate-400" />
                     )}
                   </motion.a>
                 );
               })}
             </div>
 
-            {/* Bottom Form Factor Content for Mobile Menu Frame */}
             <div className="flex flex-col gap-4">
               <a
                 href="#pricing"

@@ -1,3 +1,4 @@
+import { useTheme } from "../../context/ThemeContext";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, MessageSquare, Send, CheckCircle2, Loader2 } from 'lucide-react';
@@ -6,6 +7,8 @@ export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle | loading | success
 
+  const { theme } = useTheme();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
