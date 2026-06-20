@@ -3,7 +3,7 @@ import ParallaxBackground from "../ui/ParallaxBackground";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
 
         <ParallaxBackground />
       {/* Glow Background */}
@@ -50,13 +50,19 @@ export default function Hero() {
           transition={{ delay: 0.7 }}
           className="mt-10 flex flex-col sm:flex-row justify-center gap-4"
         >
-          <button className="px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition">
+          <a
+            href="#pricing"
+            className="px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition"
+         >
             Get Started
-          </button>
+          </a>
 
-          <button className="px-8 py-4 rounded-xl border border-slate-700 hover:border-slate-500 transition">
+          <a
+            href="#services"
+            className="px-8 py-4 rounded-xl border border-slate-700 hover:border-slate-500 transition"
+          >
             View Services
-          </button>
+          </a>
         </motion.div>
 
       </div>

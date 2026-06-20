@@ -1,13 +1,32 @@
-import Navbar from "./components/layout/Navbar.jsx";
-import Hero from "./components/sections/Hero.jsx";
-import Services from "./components/sections/Services.jsx";
+import SmoothScroll from "./components/ui/SmoothScroll";
+import ScrollTop from "./components/ui/ScrollTop";
+
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Services from "./components/sections/Services";
+import Pricing from "./components/sections/Pricing";
+import Portfolio from "./components/sections/Portfolio";
+import Testimonials from "./components/sections/Testimonials";
+import FAQ from "./components/sections/FAQ";
+import Contact from "./components/sections/Contact";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
     <>
+      <SmoothScroll />
       <Navbar />
       <Hero />
+      <About />
       <Services />
+      <Pricing />
+      <Portfolio />
+      <Testimonials />
+      <FAQ />
+      <Contact />
+      <Footer />
+      <ScrollTop />
     </>
   );
 }
