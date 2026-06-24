@@ -16,13 +16,13 @@ export default function Navbar() {
     { name: "FAQ", id: "faq" },
     { name: "Contact", id: "contact" },
     { name: "Team", id: "team" },
-    { name: "Career", id: "career" },
+    { name: "Careers", id: "careers" },
   ];
 
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-30% 0px -60% 0px",
+      rootMargin: "-20% 0px -60% 0px",
       threshold: 0,
     };
 

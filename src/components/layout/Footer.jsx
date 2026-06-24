@@ -23,7 +23,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center text-slate-500 text-sm mt-8">
-        © {new Date().getFullYear()} Kroysoft. All rights reserved.
+        © {new Date().getFullYear()} Kroysoft. All rights reserved. Developed by Uday - kroysoft.
       </div>
     </footer>
   );

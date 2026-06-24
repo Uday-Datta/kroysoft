@@ -11,6 +11,7 @@ import Testimonials from "./components/sections/Testimonials";
 import FAQ from "./components/sections/FAQ";
 import Contact from "./components/sections/Contact";
 import Team from "./components/sections/Team";
+import Careers from "./components/sections/Careers";
 import Footer from "./components/layout/Footer";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <FAQ />
       <Contact />
       <Team />
+      <Careers/>
       <Footer />
       <ScrollTop />
     </>

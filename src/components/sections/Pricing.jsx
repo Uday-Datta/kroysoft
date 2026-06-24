@@ -44,7 +44,7 @@ export default function Pricing() {
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-indigo-600 px-4 py-1 rounded-full text-sm">
+                  <span className="bg-indigo-600 px-4 py-1 rounded-full text-sm font-medium">
                     Most Popular
                   </span>
                 </div>
@@ -54,21 +54,25 @@ export default function Pricing() {
                 {plan.name}
               </h3>
 
-              <p className="text-slate-400 mt-2">
+              <p className="text-slate-400 mt-2 min-h-[48px]">
                 {plan.description}
               </p>
 
-              <div className="mt-6 text-5xl font-bold">
-                {plan.price}
+              {/* Updated BDT Currency Layout */}
+              <div className="mt-6 flex items-baseline gap-1">
+                <span className="text-3xl font-bold text-slate-400">৳</span>
+                <div className="text-5xl font-bold">
+                  {plan.price}
+                </div>
               </div>
 
               <ul className="mt-8 space-y-4">
                 {plan.features.map((feature) => (
                   <li
                     key={feature}
-                    className="text-slate-300"
+                    className="text-slate-300 flex items-center gap-2"
                   >
-                    ✓ {feature}
+                    <span className="text-indigo-400">✓</span> {feature}
                   </li>
                 ))}
               </ul>
