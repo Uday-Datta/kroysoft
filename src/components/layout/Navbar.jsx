@@ -8,10 +8,10 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("hero");
 
   const navLinks = [
+    { name: "Portfolio", id: "portfolio" },
     { name: "About", id: "about" },
     { name: "Services", id: "services" },
     { name: "Pricing", id: "pricing" },
-    { name: "Portfolio", id: "portfolio" },
     { name: "Testimonials", id: "testimonials" },
     { name: "FAQ", id: "faq" },
     { name: "Contact", id: "contact" },

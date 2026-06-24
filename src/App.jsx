@@ -20,10 +20,10 @@ function App() {
       <SmoothScroll />
       <Navbar />
       <Hero />
+      <Portfolio />
       <About />
       <Services />
       <Pricing />
-      <Portfolio />
       <Testimonials />
       <FAQ />
       <Contact />
