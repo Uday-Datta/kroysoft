@@ -3,6 +3,7 @@ import ScrollTop from "./components/ui/ScrollTop";
 
 import Navbar from "./components/layout/Navbar";
 import Hero from "./components/sections/Hero";
+import StatsCounter from "./components/sections/StatsCounter";
 import About from "./components/sections/About";
 import Services from "./components/sections/Services";
 import Pricing from "./components/sections/Pricing";
@@ -20,6 +21,7 @@ function App() {
       <SmoothScroll />
       <Navbar />
       <Hero />
+      <StatsCounter />
       <Portfolio />
       <About />
       <Services />

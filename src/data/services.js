@@ -12,7 +12,7 @@ export const services = [
     description: "ERP, LMS and business automation systems.",
   },
   {
-    title: "UI/UX Design",
-    description: "Clean and user-friendly interface design.",
+    title: "Data Automation",
+    description: "Streamline your data processes with our automation solutions.",
   },
 ];
